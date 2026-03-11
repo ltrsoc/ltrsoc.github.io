@@ -1,39 +1,32 @@
-# 🌐 LTR Society Website
+# LTR Society — Official Website
 
-> The official website for **LTR Society** — showcasing our plans, goals, and achievements.
+The official website of **LTR Society**, serving as the central platform for publishing the organization's plans, updates, and achievements.
 
----
+## Overview
 
-## 🔗 Links
+This project is a static website built and maintained by the LTR Society development team. It is publicly accessible via GitHub Pages and provides visitors with up-to-date information on the society's activities and milestones.
 
-| | URL |
-|---|---|
-| **Main** | https://ltrsoc.github.io/ |
-| **Alternate** | https://yip.su/2kWWD5 |
+## Access
 
----
+The website can be reached through either of the following links:
 
-## 👥 Developers
+- **Primary:** https://ltrsoc.github.io/
+- **Alternate:** https://yip.su/2kWWD5
 
-| Developer | Role |
-|---|---|
-| [anonimwindows](https://github.com/anonimwindows) | Co-developer |
-| [KFlone5](https://github.com/KFlone5) | Co-developer |
+If the primary link is temporarily unavailable, the alternate link can be used.
 
----
+## Development
 
-## 📋 About
+| Name | GitHub |
+|------|--------|
+| anonimwindows | [@anonimwindows](https://github.com/anonimwindows) |
+| KFlone5 | [@KFlone5](https://github.com/KFlone5) |
 
-LTR Society's website serves as a central hub for information about the group's ongoing plans and milestones. Built and maintained by the LTR Society team.
+## Hosting
 
----
-
-## 🚀 Deployment
-
-This site is hosted via **GitHub Pages**.
-
-If the main link is unavailable, please use the alternate link above.
+This website is hosted using **GitHub Pages**. No additional infrastructure is required — the site is deployed directly from this repository.
 
 ---
 
-*v1.0 — Released 09.03.2026*
+**Version 1.0** — Released March 9, 2026
+

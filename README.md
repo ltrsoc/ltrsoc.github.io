@@ -1,6 +1,39 @@
-# ltrsociety
-Website about LTR Society plans and achievements
-Developed by **anonimwindows** and **KFlone5** , v1.0 on 09.03.2026
+# 🌐 LTR Society Website
 
-Main link: https://ltrsoc.github.io/
-Alternate link: https://yip.su/2kWWD5
+> The official website for **LTR Society** — showcasing our plans, goals, and achievements.
+
+---
+
+## 🔗 Links
+
+| | URL |
+|---|---|
+| **Main** | https://ltrsoc.github.io/ |
+| **Alternate** | https://yip.su/2kWWD5 |
+
+---
+
+## 👥 Developers
+
+| Developer | Role |
+|---|---|
+| [anonimwindows](https://github.com/anonimwindows) | Co-developer |
+| [KFlone5](https://github.com/KFlone5) | Co-developer |
+
+---
+
+## 📋 About
+
+LTR Society's website serves as a central hub for information about the group's ongoing plans and milestones. Built and maintained by the LTR Society team.
+
+---
+
+## 🚀 Deployment
+
+This site is hosted via **GitHub Pages**.
+
+If the main link is unavailable, please use the alternate link above.
+
+---
+
+*v1.0 — Released 09.03.2026*

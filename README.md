@@ -4,7 +4,7 @@ The official website of **LTR Society**, serving as the central platform for pub
 
 ## Overview
 
-This project is a static website built and maintained by the LTR Society development team. It is publicly accessible via GitHub Pages and provides visitors with up-to-date information on the society's activities and milestones.
+This project is a static website built and maintained by the LTR Society. It is publicly accessible via GitHub Pages and provides visitors with current information on the our activities and achievements.
 
 ## Access
 

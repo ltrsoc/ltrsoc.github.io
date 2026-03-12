@@ -11,7 +11,6 @@ This project is a static website built and maintained by the LTR Society. It is 
 The website can be reached through either of the following links:
 
 - **Primary:** https://ltrsoc.github.io/
-- **Alternate:** https://yip.su/2kWWD5
 
 If the primary link is temporarily unavailable, the alternate link can be used.
 

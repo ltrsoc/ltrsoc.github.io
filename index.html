@@ -8,14 +8,20 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- NAV -->
+  
   <nav>
     <div class="logo">LTR</div>
+    <a class="btn-sponsor" href="https://www.donationalerts.com/r/ltrsociety" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/>
+      </svg>
+      Sponsor
+    </a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#members">Members</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#future-projects">Future</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#interests">Interests</a></li>
     </ul>
@@ -23,10 +29,12 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-badge">LEGION · ORGANIZATION · COLLECTIVE</div>
+    <div class="hero-badge" id="hero-badge">
+      L<span class="glitch-chars" data-len="5"></span> · T<span class="glitch-chars" data-len="10"></span> · R<span class="glitch-chars" data-len="10"></span>
+    </div>
     <img src="images/zabroshka.png" alt="Zabroshka" class="hero-img" />
     <h1>We are <span>LTR</span></h1>
-    <p>An independent organization focused on software development, research, and the execution of original ideas.</p>
+    <p>An independent organization focused on Software Development, Cyber Security, research, and the execution of original ideas.</p>
     <div class="hero-btns">
       <a class="btn btn-primary" href="#projects">Our Projects</a>
       <a class="btn btn-outline" href="#about">About Us</a>
@@ -40,12 +48,11 @@
     <h2 class="section-title">About LTR</h2>
     <p class="section-sub">Who we are and what we stand for</p>
     <p class="about-text">
-      <strong>LTR</strong> is an independent organization founded in 2022. We develop software, conduct research,
-      and pursue projects that we consider meaningful. Our work spans utilities, distributed systems,
-      and experimental tools.
+      <strong>LTR</strong> is an independent organization founded in 2022. It was created purely by fate. A few random seconds and chance encounters decided everything. If not for those moments, LTR would never have existed at all. We have no external funding, no investors, and no oversight. We answer only to ourselves.
       <br /><br />
-      We operate without external oversight and answer to no one but ourselves.
-      The organization is small by design — quality and intent take precedence over scale.
+      We develop software, conduct research, and make projects that we consider meaningful. Our work spans utilities, distributed systems, experimental tools and projects where we integrate AI.
+      <br /><br />
+      We operate without external oversight and answer to no one but ourselves. The organization is small because we are not recognizable yet.
     </p>
   </section>
 
@@ -57,18 +64,18 @@
     <p class="section-sub">The individuals behind LTR</p>
     <div class="members-grid">
 
-      <a class="member-card" href="https://github.com/MaksimStepnov" target="_blank" rel="noopener">
+      <a class="member-card" href="https://github.com/anonimwindows228" target="_blank" rel="noopener">
         <div class="avatar">AW</div>
-        <div class="member-name">anonimwindows</div>
+        <div class="member-name">anonimwindows228</div>
         <div class="member-role">Co-Founder</div>
-        <div class="member-bio">Co-founder of LTR. View profile on GitHub →</div>
+        <div class="member-bio">Co-founder of LTR. View profile on GitHub</div>
       </a>
 
       <a class="member-card" href="https://github.com/KFlone5" target="_blank" rel="noopener">
         <div class="avatar">KF</div>
         <div class="member-name">KFlone5</div>
         <div class="member-role">Co-Founder</div>
-        <div class="member-bio">Co-founder of LTR. View profile on GitHub →</div>
+        <div class="member-bio">Co-founder of LTR. View profile on GitHub</div>
       </a>
 
     </div>
@@ -82,36 +89,104 @@
     <p class="section-sub">Current and ongoing development</p>
     <div class="projects-list">
 
-      <div class="project-card">
+      <a class="project-card" href="https://github.com/KFlone5/GhbdtnFix" target="_blank" rel="noopener">
         <div>
           <div class="project-name">GhbdtnFix</div>
           <div class="project-desc">A utility for quick text modification. Select text and change case or switch keyboard layout instantly.</div>
+          <div class="project-lang"><span class="lang-dot lang-cpp"></span>C++</div>
         </div>
-        <span class="badge badge-wip">in progress</span>
+        <span class="badge badge-release">v1.2.1</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/anonimwindows228/DarkGPT" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">Obsidian</div>
+          <div class="project-desc">An AI-powered tool built on top of GPT. Dark-themed, no filters, built for raw utility.</div>
+          <div class="project-lang"><span class="lang-dot lang-python"></span>Python</div>
+        </div>
+        <span class="badge badge-release">v2.0_Super</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/anonimwindows228/SuperMaths" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">SuperMaths</div>
+          <div class="project-desc">A powerful math utility for computation and problem solving.</div>
+          <div class="project-lang"><span class="lang-dot lang-python"></span>Python</div>
+        </div>
+        <span class="badge badge-release">v1.1</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/KFlone5/Krunch" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">Krunch</div>
+          <div class="project-desc">Custom wordlist generator with pattern control. Will be a module for RuneEnigma</div>
+          <div class="project-lang"><span class="lang-dot lang-python"></span>Python</div>
+        </div>
+        <span class="badge badge-release">v2.0.0</span>
+      </a>
+
+      <a class="project-card" href="https://github.com/anonimwindows228/Vault-file-encryption" target="_blank" rel="noopener">
+        <div>
+          <div class="project-name">Vault-file-encryption</div>
+          <div class="project-desc">File encryption and decryption software. (WinVFE)</div>
+          <div class="project-lang"><span class="lang-dot lang-python"></span>Python</div>
+        </div>
+        <span class="badge badge-release">v1.0.0</span>
+      </a>
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">LTR Website</div>
+          <div class="project-desc">This very site. Amazing sigma website.</div>
+        </div>
+        <span class="badge badge-active">live</span>
+      </div>
+
+    </div>
+  </section>
+
+  <hr />
+
+  <!-- FUTURE PROJECTS -->
+  <section id="future-projects">
+    <h2 class="section-title">Future Projects</h2>
+    <p class="section-sub">Ideas and plans in the pipeline</p>
+    <div class="projects-list">
+
+      <div class="project-card">
+        <div>
+          <div class="project-name">Website v2.0</div>
+          <div class="project-desc">Migration from the current GitHub Pages site to our own custom domain. The current site will keep working, but we will add a button to go to the new version. We will move from a purely static site to a more powerful and dynamic platform with ongoing improvements. The new version will also feature a Q&A section, where anyone can ask questions and receive answers directly on the site.</div>
+          <div class="project-lang"><span class="lang-dot lang-js"></span>Web Development</div>
+        </div>
+        <span class="badge badge-idea">planned</span>
       </div>
 
       <div class="project-card">
         <div>
           <div class="project-name">RuneEnigma</div>
-          <div class="project-desc">A botnet aimed at hash decryption. Distributed cracking, built for speed.</div>
+          <div class="project-desc">A botnet aimed at hash decryption. Distributed cracking, built for speed. (Please note that its not a DDoS botnet)</div>
+          <div class="project-lang"><span class="lang-dot lang-python"></span>Python</div>
         </div>
-        <span class="badge badge-wip">in progress</span>
+        <span class="badge badge-idea">planned</span>
       </div>
 
       <div class="project-card">
         <div>
-          <div class="project-name">TelegramBOTnik</div>
-          <div class="project-desc">A Telegram bot where you can play message-based games directly in chat.</div>
+          <div class="project-name">Aperio</div>
+          <div class="project-desc">A wordlist-based hash bruteforcer similar to Hydra or Hashcat. Will be used in RuneEnigma project. Fast, lightweight, no bloat.</div>
+          <div class="project-lang"><span class="lang-dot lang-python"></span>Python</div>
         </div>
-        <span class="badge badge-wip">in progress</span>
+        <span class="badge badge-idea">in progress</span>
       </div>
 
       <div class="project-card">
         <div>
-          <div class="project-name">LTR Website</div>
-          <div class="project-desc">This very site. A place for our stuff.</div>
+          <div class="project-name">GhbdtnFix (GUI)</div>
+          <div class="project-desc">A full GUI (Graphical User Interface) for GhbdtnFix with new features. GUI built in Qt.</div>
+          <div class="project-lang"><span class="lang-dot lang-cpp"></span>C++ /<img src="images/qt_logo.ico" class="qt-img"> Qt</div>
         </div>
-        <span class="badge badge-active">live</span>
+        <span class="badge badge-idea">planned</span>
       </div>
 
     </div>
@@ -122,15 +197,23 @@
   <!-- NEWS -->
   <section id="news">
     <h2 class="section-title">News</h2>
-    <p class="section-sub">A record of notable events</p>
+    <p class="section-sub">A record of notable LTR events</p>
     <div class="news-list">
 
       <div class="news-card">
         <div class="news-meta">
           <span class="news-date">2024-05-31</span>
-          <span class="news-tag-badge">incident</span>
+          <span class="news-tag-badge">Tragedy</span>
         </div>
-        <div class="news-title">Fatal mistake</div>
+        <div class="news-title">Fatal mistake (ifykyk)</div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-meta">
+          <span class="news-date">2023-12-17</span>
+          <span class="news-tag-badge">Tragedy</span>
+        </div>
+        <div class="news-title">Great separation</div>
       </div>
 
       <div class="news-card">
@@ -138,13 +221,13 @@
           <span class="news-date">2022-11-19 · 17:36</span>
           <span class="news-tag-badge">event</span>
         </div>
-        <div class="news-title">Mr F:A L:R was playing</div>
+        <div class="news-title">Mr "Aleksander Grab<span class="glitch-chars" data-len="6"></span>" playing 😈</div>
       </div>
 
       <div class="news-card">
         <div class="news-meta">
           <span class="news-date">2022-09-23</span>
-          <span class="news-tag-badge">incident</span>
+          <span class="news-tag-badge">event</span>
         </div>
         <div class="news-title">Grandiose Zabrashka incident</div>
       </div>
@@ -197,13 +280,13 @@
   <!-- INTERESTS -->
   <section id="interests">
     <h2 class="section-title">Areas of Interest</h2>
-    <p class="section-sub">Fields and disciplines we operate in</p>
+    <p class="section-sub">Fields where we interested in:</p>
     <div class="interests-grid">
 
       <div class="interest-card">
         <div class="interest-icon">💻</div>
         <div class="interest-name">Software Development</div>
-        <p class="interest-desc">Utilities, bots, web tools, and applications — built from scratch.</p>
+        <p class="interest-desc">Utilities, bots, websites, and applications built from our scratch. The ideas comes from our imagination.</p>
       </div>
 
       <div class="interest-card">
@@ -215,25 +298,24 @@
       <div class="interest-card">
         <div class="interest-icon">🔬</div>
         <div class="interest-name">Research</div>
-        <p class="interest-desc">Investigating systems, protocols, and technologies with practical intent.</p>
+        <p class="interest-desc">Investigating systems, vulnerabilities, and technologies with practical inplementation.</p>
       </div>
 
       <div class="interest-card">
         <div class="interest-icon">🌐</div>
         <div class="interest-name">Networking</div>
-        <p class="interest-desc">Distributed systems, online infrastructure, and digital communities.</p>
+        <p class="interest-desc">Building a distributed systems (botnet). Building portable esp32 devices for network analysis</p>
       </div>
 
       <div class="interest-card">
         <div class="interest-icon">🤝</div>
         <div class="interest-name">Collaboration</div>
-        <p class="interest-desc">Working with individuals who share a commitment to building real things.</p>
+        <p class="interest-desc">Working with individuals who share the same interests as we do.</p>
       </div>
 
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2022–2026 <span>LTR</span>. All rights reserved.</p>
   </footer>

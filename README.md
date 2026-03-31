@@ -1,18 +1,24 @@
-# LTR Society — Official Website
+# LTR Enigma: Official Website
 
-The official website of **LTR Society**, serving as the central platform for publishing the organization's plans, updates, and achievements.
+The official website of **LTR**, serving as the central platform for publishing the organization's projects, updates, and information.
+
+> **⚠️ Notice:** Our previous organization [**ltrsoc**](https://github.com/ltrsoc) was flagged by GitHub and is currently under review for reinstatement. **LTR Enigma** serves as our temporary home in the meantime. All active development continues here until **ltrsoc** is restored.
 
 ## Overview
 
-This project is a static website built and maintained by the LTR Society. It is publicly accessible via GitHub Pages and provides visitors with current information on the our activities and achievements.
+This repository contains the source code for the LTR static website, hosted via GitHub Pages. The site provides an overview of our active and upcoming projects, as well as general information about LTR and its members.
 
 ## Access
 
-The website can be reached through either of the following links:
+- **Primary:** https://ltrenigma.github.io/
 
-- **Primary:** https://ltrsoc.github.io/
+## Contents
 
-If the primary link is temporarily unavailable, the alternate link can be used.
+The website includes:
+
+- A list of our current active projects with links to their repositories
+- Information about LTR and what we do
+- Planned and upcoming projects
 
 ## Development
 
@@ -23,9 +29,8 @@ If the primary link is temporarily unavailable, the alternate link can be used.
 
 ## Hosting
 
-This website is hosted using **GitHub Pages**. No additional infrastructure is required — the site is deployed directly from this repository.
+Hosted via **GitHub Pages**, deployed directly from this repository. No additional infrastructure required.
 
 ---
 
-**Version 1.0** — Released March 9, 2026
-
+**Version 2.0** | Migrated March 2026

@@ -24,7 +24,7 @@ The website includes:
 
 | Name | GitHub |
 |------|--------|
-| anonimwindows | [@anonimwindows](https://github.com/anonimwindows228) |
+| anonimwindows | [@anonimwindows228](https://github.com/anonimwindows228) |
 | KFlone5 | [@KFlone5](https://github.com/KFlone5) |
 
 ## Hosting

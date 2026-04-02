@@ -1,1 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LTR · Downloads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── PAGE HEADER ─────────────────────────────────── */
+    .dl-hero {
+      padding: 4rem 2rem 1rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .dl-hero-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .dl-hero-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #e0e0e0 0%, #888 40%, #d4d4d4 70%, #aaa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .dl-hero-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
 
+    .dl-status-bar {
+      max-width: 960px;
+      margin: 1.2rem auto 0;
+      padding: 0 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #444;
+    }
+    .error-notice {
+      max-width: 960px;
+      margin: 0.5rem auto 0;
+      padding: 0 2rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #f87171;
+      display: none;
+    }
+
+    /* ── CATALOG GRID ─────────────────────────────────── */
+    .catalog {
+      max-width: 960px;
+      margin: 3.5rem auto 6rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 4rem 2.5rem;
+    }
+
+    /* skeleton */
+    .catalog-loading {
+      max-width: 960px;
+      margin: 3.5rem auto 5rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 4rem 2.5rem;
+    }
+    .skeleton-item {
+      height: 320px;
+      border-radius: 4px;
+      background: var(--card);
+      position: relative;
+      overflow: hidden;
+    }
+    .skeleton-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+    @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+    /* ── PRODUCT CARD ─────────────────────────────────── */
+    .product-card {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      gap: 0;
+      padding-top: 16px;
+    }
+
+    .product-card:hover .box-3d  { transform: translateY(-8px); }
+    .product-card:hover .disc-wrap { transform: translateX(8px) rotate(10deg); }
+
+    /* ── 3-D BOX ──────────────────────────────────────── */
+    .box-3d {
+      position: relative;
+      width: 170px;
+      flex-shrink: 0;
+      transition: transform 0.35s ease;
+    }
+
+    /* TOP face */
+    .box-top {
+      position: absolute;
+      top: -12px;
+      left: 10px;
+      right: -18px;
+      height: 14px;
+      transform: skewX(28deg);
+      border-radius: 1px 2px 0 0;
+      z-index: 2;
+    }
+
+    /* FRONT face */
+    .box-front {
+      position: relative;
+      width: 170px;
+      height: 268px;
+      border-radius: 2px 0 0 2px;
+      overflow: hidden;
+      box-shadow:
+        -3px 4px 8px rgba(0,0,0,0.7),
+        0 10px 32px rgba(0,0,0,0.55);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box-top-band {
+      padding: 10px 12px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .box-ltr-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.92);
+      letter-spacing: 0.1em;
+    }
+    .box-author-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      color: rgba(255,255,255,0.4);
+      margin-left: auto;
+      text-align: right;
+      line-height: 1.5;
+    }
+
+    .box-title-band {
+      padding: 9px 12px 8px;
+      flex-shrink: 0;
+    }
+    .btb-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 3px;
+    }
+    .btb-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      word-break: break-word;
+    }
+
+    .box-mid-area {
+      flex: 1;
+      padding: 8px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .bm-desc {
+      font-size: 0.68rem;
+      line-height: 1.45;
+      color: rgba(255,255,255,0.45);
+    }
+    .box-lang-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 3px;
+      padding: 2px 7px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.58rem;
+      color: rgba(255,255,255,0.55);
+      width: fit-content;
+    }
+
+    .box-bottom-band {
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .box-version-sticker {
+      background: rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 3px;
+      padding: 2px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .box-award-icons span { font-size: 0.85rem; }
+
+    /* RIGHT SIDE face */
+    .box-side {
+      position: absolute;
+      top: 2px;
+      right: -20px;
+      width: 20px;
+      height: 268px;
+      transform: skewY(-2.5deg);
+      transform-origin: top left;
+      overflow: hidden;
+      border-radius: 0 2px 2px 0;
+      box-shadow: 3px 4px 14px rgba(0,0,0,0.5);
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .box-side-text {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.46rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      max-height: 88%;
+    }
+
+    /* ── DVD DISC ─────────────────────────────────────── */
+    .disc-wrap {
+      position: relative;
+      margin-left: -8px;
+      margin-bottom: 14px;
+      flex-shrink: 0;
+      transition: transform 0.35s ease;
+      z-index: 10;
+    }
+    .disc-svg {
+      width: 112px;
+      height: 112px;
+      filter: drop-shadow(-5px 8px 16px rgba(0,0,0,0.75));
+      animation: disc-spin 20s linear infinite;
+    }
+    @keyframes disc-spin { to { transform: rotate(360deg); } }
+
+    /* ── ACTION BUTTONS ───────────────────────────────── */
+    .card-actions {
+      position: absolute;
+      bottom: -2.6rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    .btn-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0.48rem 1rem;
+      border-radius: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #dc2626, #991b1b);
+      color: #fff;
+      border: 1px solid rgba(220,38,38,0.5);
+      box-shadow: 0 2px 10px rgba(220,38,38,0.3);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-dl:hover {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      box-shadow: 0 4px 16px rgba(220,38,38,0.5);
+      transform: translateY(-1px);
+    }
+    .btn-src {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0.43rem 0.75rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: transparent;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .btn-src:hover { border-color: var(--accent-light); color: var(--text); }
+
+    /* ── COLOUR THEMES ────────────────────────────────── */
+    /* Python — navy + electric blue */
+    [data-theme="python"] .box-top-band    { background: linear-gradient(135deg, #0d1b35, #163260); }
+    [data-theme="python"] .box-title-band  { background: linear-gradient(120deg, #1565c0, #1976d2); }
+    [data-theme="python"] .box-mid-area    { background: #0b1625; }
+    [data-theme="python"] .box-bottom-band { background: linear-gradient(135deg, #0d1b35, #163260); }
+    [data-theme="python"] .box-side        { background: linear-gradient(180deg, #0b1625 0%, #163260 50%, #0b1625 100%); }
+    [data-theme="python"] .box-top         { background: linear-gradient(90deg,  #1565c0, #42a5f5); }
+
+    /* C++ — near-black + hot pink */
+    [data-theme="cpp"] .box-top-band    { background: linear-gradient(135deg, #180010, #320020); }
+    [data-theme="cpp"] .box-title-band  { background: linear-gradient(120deg, #b5006a, #e91e8c); }
+    [data-theme="cpp"] .box-mid-area    { background: #110008; }
+    [data-theme="cpp"] .box-bottom-band { background: linear-gradient(135deg, #180010, #320020); }
+    [data-theme="cpp"] .box-side        { background: linear-gradient(180deg, #110008 0%, #320020 50%, #110008 100%); }
+    [data-theme="cpp"] .box-top         { background: linear-gradient(90deg,  #b5006a, #f06292); }
+
+    /* JS — dark forest green + gold, Kaspersky vibes */
+    [data-theme="js"] .box-top-band    { background: linear-gradient(135deg, #071a07, #12310f); }
+    [data-theme="js"] .box-title-band  { background: linear-gradient(120deg, #b38600, #d4a017); }
+    [data-theme="js"] .box-mid-area    { background: #060e06; }
+    [data-theme="js"] .box-bottom-band { background: linear-gradient(135deg, #071a07, #12310f); }
+    [data-theme="js"] .box-side        { background: linear-gradient(180deg, #060e06 0%, #12310f 50%, #060e06 100%); }
+    [data-theme="js"] .box-top         { background: linear-gradient(90deg,  #b38600, #f5c842); }
+
+    /* default — dark + violet */
+    [data-theme="default"] .box-top-band    { background: linear-gradient(135deg, #100820, #1e0f3a); }
+    [data-theme="default"] .box-title-band  { background: linear-gradient(120deg, #5b21b6, #7c3aed); }
+    [data-theme="default"] .box-mid-area    { background: #0c0619; }
+    [data-theme="default"] .box-bottom-band { background: linear-gradient(135deg, #100820, #1e0f3a); }
+    [data-theme="default"] .box-side        { background: linear-gradient(180deg, #0c0619 0%, #1e0f3a 50%, #0c0619 100%); }
+    [data-theme="default"] .box-top         { background: linear-gradient(90deg,  #5b21b6, #a78bfa); }
+
+    @media (max-width: 600px) {
+      .catalog { grid-template-columns: 1fr 1fr; gap: 3.5rem 1.2rem; }
+      .box-3d, .box-front { width: 128px; }
+      .box-front { height: 208px; }
+      .box-side  { width: 16px; right: -16px; height: 208px; }
+      .disc-svg  { width: 86px; height: 86px; }
+      .btb-name  { font-size: 0.82rem; }
+    }
+    @media (max-width: 380px) {
+      .catalog { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">LTR</div>
+    <a class="btn-sponsor" href="https://www.donationalerts.com/r/ltrsociety" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+      Sponsor
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#members">Members</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#future-projects">Future</a></li>
+      <li><a href="index.html#news">News</a></li>
+      <li><a href="index.html#interests">Interests</a></li>
+      <li><a href="downloads.html" style="color:var(--accent-light);">Downloads</a></li>
+    </ul>
+  </nav>
+
+  <div class="dl-hero">
+    <div class="dl-hero-label">// software distribution centre</div>
+    <h1 class="dl-hero-title">Downloads</h1>
+    <p class="dl-hero-sub">Official releases from LTR projects — fetched live from GitHub.</p>
+  </div>
+
+  <div class="dl-status-bar" id="status-bar">Fetching releases…</div>
+  <div class="error-notice" id="error-notice"></div>
+
+  <div class="catalog-loading" id="skeleton">
+    <div class="skeleton-item"></div>
+    <div class="skeleton-item"></div>
+    <div class="skeleton-item"></div>
+    <div class="skeleton-item"></div>
+    <div class="skeleton-item"></div>
+  </div>
+
+  <div class="catalog" id="catalog" style="display:none;"></div>
+
+  <footer>
+    <p>© 2022–2026 <span>LTR</span>. All rights reserved.</p>
+  </footer>
+
+<script>
+const REPOS = [
+  { owner: 'anonimwindows228', repo: 'Vault-file-encryption', lang: 'python',
+    desc: 'AES-256-GCM file encryption & decryption software.', awards: ['🔐','🏆'] },
+  { owner: 'anonimwindows228', repo: 'SuperMaths',            lang: 'python',
+    desc: 'AI tutoring platform for math problem solving.',     awards: ['🤖','⭐'] },
+  { owner: 'anonimwindows228', repo: 'Obsidian',              lang: 'python',
+    desc: 'Open-source LLM — dark-themed, no filters, raw utility.', awards: ['💎','🔥'] },
+  { owner: 'KFlone5',          repo: 'GhbdtnFix',             lang: 'cpp',
+    desc: 'Instant keyboard layout switcher & case changer.',  awards: ['⚡','🎯'] },
+  { owner: 'KFlone5',          repo: 'Krunch',                lang: 'python',
+    desc: 'Custom wordlist generator with pattern control.',   awards: ['🛠️','🔑'] },
+];
+
+const LANG_LABELS = { python: 'Python', cpp: 'C++', js: 'JavaScript' };
+
+/* ── Iridescent DVD SVG ──────────────────────────────────── */
+function discSVG(theme) {
+  const cols = {
+    python:  ['#1e88e5','#0d47a1','#42a5f5'],
+    cpp:     ['#e91e8c','#880e4f','#f48fb1'],
+    js:      ['#d4a017','#6d4c00','#ffe082'],
+    default: ['#7c3aed','#3b0764','#c4b5fd'],
+  };
+  const [c1, c2, c3] = cols[theme] || cols.default;
+  const id = Math.random().toString(36).slice(2,8);
+
+  return `<svg class="disc-svg" viewBox="0 0 110 110" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bd${id}" cx="36%" cy="30%" r="72%">
+      <stop offset="0%"   stop-color="#f0f0f0"/>
+      <stop offset="8%"   stop-color="${c3}" stop-opacity="0.7"/>
+      <stop offset="22%"  stop-color="#a0c8e8"/>
+      <stop offset="38%"  stop-color="${c1}" stop-opacity="0.9"/>
+      <stop offset="55%"  stop-color="#c0b8d0"/>
+      <stop offset="72%"  stop-color="${c2}" stop-opacity="0.7"/>
+      <stop offset="88%"  stop-color="#282838"/>
+      <stop offset="100%" stop-color="#141420"/>
+    </radialGradient>
+    <radialGradient id="sh${id}" cx="28%" cy="22%" r="55%">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0.65)"/>
+      <stop offset="35%"  stop-color="rgba(255,255,255,0.15)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <radialGradient id="lb${id}" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#1c1c1c"/>
+      <stop offset="55%"  stop-color="${c2}"/>
+      <stop offset="100%" stop-color="#080808"/>
+    </radialGradient>
+    <!-- rainbow sheen overlay (conic) -->
+    <style>
+      .rc${id} {
+        transform-origin: 55px 55px;
+        animation: disc-spin 20s linear infinite;
+      }
+    </style>
+    <clipPath id="cp${id}"><circle cx="55" cy="55" r="52"/></clipPath>
+  </defs>
+
+  <!-- disc body -->
+  <circle cx="55" cy="55" r="52" fill="url(#bd${id})"/>
+
+  <!-- track rings -->
+  <circle cx="55" cy="55" r="48" fill="none" stroke="rgba(160,200,255,0.1)"  stroke-width="0.6"/>
+  <circle cx="55" cy="55" r="43" fill="none" stroke="rgba(255,160,200,0.09)" stroke-width="0.5"/>
+  <circle cx="55" cy="55" r="37" fill="none" stroke="rgba(160,255,190,0.08)" stroke-width="0.5"/>
+  <circle cx="55" cy="55" r="31" fill="none" stroke="rgba(200,180,255,0.10)" stroke-width="0.6"/>
+  <circle cx="55" cy="55" r="26" fill="none" stroke="rgba(255,220,160,0.08)" stroke-width="0.5"/>
+
+  <!-- sheen -->
+  <circle cx="55" cy="55" r="52" fill="url(#sh${id})"/>
+
+  <!-- label ring -->
+  <circle cx="55" cy="55" r="22" fill="url(#lb${id})"/>
+  <circle cx="55" cy="55" r="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.6"/>
+
+  <!-- label text -->
+  <text x="55" y="50.5" text-anchor="middle"
+    font-family="'Orbitron',sans-serif" font-size="5.5" font-weight="900"
+    fill="rgba(255,255,255,0.9)" letter-spacing="1.5">LTR</text>
+  <text x="55" y="57.5" text-anchor="middle"
+    font-family="'JetBrains Mono',monospace" font-size="3.4"
+    fill="rgba(255,255,255,0.38)" letter-spacing="0.8">SOFTWARE</text>
+  <text x="55" y="63.5" text-anchor="middle"
+    font-family="'JetBrains Mono',monospace" font-size="3"
+    fill="rgba(255,255,255,0.22)" letter-spacing="0.4">DVD-ROM</text>
+
+  <!-- hub -->
+  <circle cx="55" cy="55" r="7.5" fill="#202020" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+  <circle cx="55" cy="55" r="3.5" fill="#0e0e0e"/>
+  <circle cx="55" cy="55" r="1.8" fill="#080808" stroke="rgba(255,255,255,0.18)" stroke-width="0.5"/>
+
+  <!-- gloss arc -->
+  <path d="M 22 36 Q 55 18 88 36"
+    fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2.2"
+    stroke-linecap="round" clip-path="url(#cp${id})"/>
+  <!-- secondary gloss -->
+  <path d="M 32 28 Q 55 22 78 28"
+    fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1"
+    stroke-linecap="round" clip-path="url(#cp${id})"/>
+</svg>`;
+}
+
+/* ── Build card ─────────────────────────────────────────── */
+function buildCard(repo, release) {
+  const tag   = release?.tag_name ?? null;
+  const theme = ['python','cpp','js'].includes(repo.lang) ? repo.lang : 'default';
+
+  const repoUrl    = `https://github.com/${repo.owner}/${repo.repo}`;
+  const releaseUrl = release
+    ? `https://github.com/${repo.owner}/${repo.repo}/releases/tag/${tag}`
+    : `${repoUrl}/releases`;
+
+  let dlUrl = releaseUrl, dlLabel = 'VIEW';
+  if (release?.assets?.length > 0) {
+    dlUrl   = release.assets[0].browser_download_url;
+    dlLabel = 'DOWNLOAD';
+  } else if (release) {
+    dlUrl   = `https://github.com/${repo.owner}/${repo.repo}/archive/refs/tags/${tag}.zip`;
+    dlLabel = 'GET ZIP';
+  }
+
+  const card = document.createElement('div');
+  card.className = 'product-card will-fade';
+  card.setAttribute('data-theme', theme);
+
+  card.innerHTML = `
+    <div class="box-3d">
+      <div class="box-top"></div>
+      <div class="box-front">
+        <div class="box-top-band">
+          <span class="box-ltr-logo">LTR</span>
+          <span class="box-author-tag">${repo.owner}<br>SOFTWARE</span>
+        </div>
+        <div class="box-title-band">
+          <div class="btb-label">Software Package</div>
+          <div class="btb-name">${repo.repo}</div>
+        </div>
+        <div class="box-mid-area">
+          <div class="bm-desc">${repo.desc}</div>
+          <div class="box-lang-pill">
+            <span class="lang-dot lang-${repo.lang}"></span>
+            ${LANG_LABELS[repo.lang] || 'Source'}
+          </div>
+        </div>
+        <div class="box-bottom-band">
+          <span class="box-version-sticker">${tag || 'dev'}</span>
+          <div class="box-award-icons">${repo.awards.map(a=>`<span>${a}</span>`).join('')}</div>
+        </div>
+      </div>
+      <div class="box-side">
+        <div class="box-side-text">${repo.repo} &middot; LTR &middot; ${tag || 'dev'}</div>
+      </div>
+    </div>
+
+    <div class="disc-wrap">${discSVG(theme)}</div>
+
+    <div class="card-actions">
+      <a class="btn-src" href="${repoUrl}" target="_blank" rel="noopener">
+        <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        Source
+      </a>
+      <a class="btn-dl" href="${dlUrl}" target="_blank" rel="noopener">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M2.75 14A1.75 1.75 0 011 12.25v-2.5a.75.75 0 011.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25v-2.5a.75.75 0 011.5 0v2.5A1.75 1.75 0 0113.25 14H2.75zM7.25 7.689L5.03 5.47a.75.75 0 00-1.06 1.06l3.5 3.5a.75.75 0 001.06 0l3.5-3.5a.75.75 0 10-1.06-1.06L8.75 7.689V2a.75.75 0 00-1.5 0v5.689z"/>
+        </svg>
+        ${dlLabel}
+      </a>
+    </div>`;
+
+  return card;
+}
+
+/* ── Fetch & render ─────────────────────────────────────── */
+async function fetchRelease(owner, repo) {
+  const r = await fetch(
+    `https://api.github.com/repos/${owner}/${repo}/releases/latest`,
+    { headers: { Accept: 'application/vnd.github+json' } }
+  );
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+
+async function init() {
+  const catalog  = document.getElementById('catalog');
+  const skeleton = document.getElementById('skeleton');
+  const statusEl = document.getElementById('status-bar');
+  const errorEl  = document.getElementById('error-notice');
+
+  const results = await Promise.allSettled(REPOS.map(r => fetchRelease(r.owner, r.repo)));
+
+  skeleton.style.display = 'none';
+  catalog.style.display  = 'grid';
+
+  let failed = 0;
+  results.forEach((res, i) => {
+    if (res.status === 'rejected') failed++;
+    catalog.appendChild(buildCard(REPOS[i], res.status === 'fulfilled' ? res.value : null));
+  });
+
+  statusEl.textContent = `${REPOS.length} packages · live from GitHub`;
+  if (failed) {
+    errorEl.style.display = 'block';
+    errorEl.textContent   = `⚠ ${failed} repo(s) could not be reached.`;
+  }
+
+  requestAnimationFrame(() => {
+    document.querySelectorAll('#catalog .will-fade').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), i * 100);
+    });
+  });
+}
+
+init().catch(err => {
+  document.getElementById('skeleton').style.display = 'none';
+  document.getElementById('error-notice').style.display = 'block';
+  document.getElementById('error-notice').textContent   = `Error: ${err.message}`;
+  document.getElementById('status-bar').textContent     = 'Failed to fetch from GitHub.';
+});
+</script>
+</body>
+</html>
